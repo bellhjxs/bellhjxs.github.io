@@ -1,0 +1,142 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación XV Años</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fce4ec; /* Fondo rosa clarito */
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .background-xv {
+            font-size: 150px;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            user-select: none;
+        }
+
+        .name {
+            font-size: 60px;
+            color: #FF69B4; /* Color rosa fuerte */
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+
+        .details {
+            font-size: 20px;
+            color: #555;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .details p {
+            margin: 10px 0;
+        }
+
+        .details .map {
+            margin-top: 20px;
+            width: 100%;
+            height: 250px; /* Altura del mapa */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .photos {
+            margin-top: 20px;
+        }
+
+        .photos img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px; /* Espacio entre las fotos */
+        }
+
+        .countdown {
+            font-size: 18px;
+            color: #FF69B4;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="background-xv">XV</div>
+        <h1 class="name">Alondra</h1>
+
+        <div class="details">
+            <p><strong>Fecha:</strong> 5 de octubre de 2024</p>
+            <p><strong>Hora:</strong> 18:00</p>
+            <p>Estaremos encantados de recibirte en este día tan especial</p>
+            <p><strong>Dirección:</strong> Francisco I. Madero 908, Ejido El Mezquital, Cdad. Apodaca</p>
+            
+            <!-- Mapa -->
+            <div class="map">
+                <iframe src="https://maps.app.goo.gl/w93Grp878YmwFcT27?g_st=ac" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div class="photos">
+            <img src="https://via.placeholder.com/500x300" alt="Foto 1">
+            <img src="https://via.placeholder.com/500x300" alt="Foto 2">
+            <img src="https://via.placeholder.com/500x300" alt="Foto 3">
+        </div>
+
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('2024-10-05T18:00:00');
+            const now = new Date();
+            const timeDiff = eventDate - now;
+
+            if (timeDiff <= 0) {
+                document.getElementById('countdown').innerHTML = "Se acerca el gran día";
+                return;
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `
+                Faltan ${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos.
+            `;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
